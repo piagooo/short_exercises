@@ -64,6 +64,7 @@ section {
 	& h1 {
 		color: var(--primary-color);
 	}
+	flex-basis: 75%;
 }
 
 /* the styles for the article */
@@ -88,7 +89,7 @@ aside {
 		max-width: 100%;
   		height: auto;
 	}
-	width: 900px;
+	flex-basis: 25%;
 }
 
 /* the styles for the footer */
