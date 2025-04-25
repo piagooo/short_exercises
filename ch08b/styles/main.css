@@ -1,0 +1,271 @@
+/* variables */
+:root {
+	--primary-color: #931420;
+	--accent-color: #f6bb73;
+	--light-accent: #fffded;
+	--light: white;
+	--dark: black;
+}
+
+/* reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* the default styles for the elements */
+body {
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    width: 80%;
+    margin: auto;
+    border: 3px solid var(--primary-color);
+}
+header, section, aside, footer { padding: 1em; }
+h1, h2, h3, p, article, blockquote { padding-bottom: .5em; }
+ul { margin-left: 1em; }
+h1 { font-size: 150%; }
+h2 { font-size: 120%; }
+h3 { font-size: 110%; }
+a:focus, a:hover { font-style: italic; }
+
+/* the styles for the header */
+header {
+	border-bottom: 3px solid var(--primary-color);
+	background-image: linear-gradient(30deg, 
+		var(--accent-color) 0%, 
+		var(--light-accent) 25%, 
+		var(--light) 50%, 
+		var(--light-accent) 75%, 
+		var(--accent-color) 100%);
+	text-align: center;
+	& h2 {
+		font-size: 175%;
+		color: var(--primary-color);
+		padding-bottom: 0;
+	}
+	& h3 {
+		font-size: 130%;
+		font-style: italic;
+	}
+	& img {
+		float: left;
+		margin: 0 30px;
+		width: clamp(40px, 15%, 66px);
+	}
+}
+
+/* the styles for the main element */
+main {
+	clear: left;
+	display: flex;
+	flex-direction: column;
+}
+
+/* the styles for the section */
+section {
+	& h1 {
+		color: var(--primary-color);
+	}
+}
+
+/* the styles for the article */
+article {
+	padding-top: .5em;
+	margin-bottom: .5em;
+	& img {
+		float: left;
+		margin: .25em 1em 1em 0;
+		border: 1px solid var(--dark);
+		width: min(100%, 225px);
+	}
+}
+
+/* the styles for the aside */
+aside {
+	& h2 {
+		color: var(--primary-color);
+	}
+	& img {
+		margin-bottom: .9em;
+	}
+	& blockquote {
+		font-style: italic;
+		margin-left: .5em;
+	}
+}
+
+/* the styles for the footer */
+footer {
+	background-color: var(--primary-color);
+	& p {
+		text-align: center;
+		color: white;
+		padding-bottom: 0; 
+	}
+}
+.spacing{
+	position: absolute; 
+	background-color: var(--primary-color);
+	width: 79%;
+	height: 50px;
+	z-index: 1;
+}
+
+/* the styles for the navigation menu */
+.navbar {
+	position: absolute;
+	z-index: 2;
+	background-color: var(--primary-color);
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	width: 40%;
+	& ul {
+		list-style-type: none;
+		margin: 0px;
+	}
+	& a {
+		display: block;
+		padding: .75em;
+		text-decoration: none;
+		color: var(--light);
+	}
+	& a.current {
+		color: var(--accent-color);
+		font-weight: bold;
+	}
+	& a.current:hover { 
+		font-style: normal; /* override hover effect */
+	}
+	span{
+		display: block;
+		background: white;
+		width: 30px;
+		height: 4px;
+		margin-bottom: 5px;
+		z-index: 1;
+		border-radius: 2px;
+	}
+	#menu-btn{
+		z-index: 2;
+		position: absolute;
+		height: 30px;
+		width: 30px;
+		opacity: 0;
+		cursor: pointer;
+	}
+}
+
+.navbar input:checked ~ .menu{
+	display: block;
+}
+
+.navbar input:checked ~ span{
+	transform: rotate(45deg) translate(-8px, -5px);
+}
+.navbar input:checked ~ span:nth-child(2){
+	transform: rotate(-45deg) translate(-7px, 5px);;  
+}
+.navbar input:checked ~ span:nth-child(3){
+	opacity: 0;
+}
+
+
+.menu {
+	display: none;
+}
+
+.menu li:has(.submenu) {
+	position: relative;
+	& small {
+		margin-left: .25em; /* add space for arrow */
+	}
+	&:hover > .submenu {
+		display: block;
+	}
+}
+
+.submenu {
+	position: absolute;
+	left: 100%;
+	top: 0;
+	background-color: var(--primary-color);
+	color: var(--light);
+	width: 100%;
+	display: none;
+
+}
+.side{
+	display:inline;
+}
+.down{
+	display:none;
+}
+
+/* the media query for the page */
+@media only screen and (min-width: 620px) {
+	header {
+		text-align: left;
+	}
+	main {
+		flex-direction: row;
+	}
+	section {
+		order: 2;
+		flex-basis: 75%;
+	}
+	aside {
+		order: 1;
+		flex-basis: 25%;
+	}
+	
+}
+
+/* the media query for the page */
+@media only screen and (min-width: 580px) {
+	.navbar{
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 10px;
+		margin-right:0;
+		width: 100%;
+		position: relative;
+	}
+	.menu {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		
+	}
+	
+	.navbar span{
+		display: none;
+	}
+	.navbar #menu-btn{
+		display: none;
+	}
+	.side{
+		display:none;
+	}
+	.down{
+		display:inline;
+	}
+	.navbar input:checked ~ .menu{
+		display: flex;
+	}
+	.spacing{
+		display: none;
+	}
+
+	.submenu {
+		position: absolute;
+		left: 0;
+		top: 100%;
+		background-color: var(--primary-color);
+		color: var(--light);
+		width: 175%;
+		display: none;
+	}
+}
