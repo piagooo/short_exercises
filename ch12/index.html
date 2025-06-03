@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete a Form</title>
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+<h1>Please complete our survey</h1>
+<form action="confirmation.html" method="get">
+    <fieldset> 
+		<legend> Contact Information </legend>
+		
+		<label for="email_address">Email Address</label>
+		<input type="email" name="email_address" id="email_address" required>
+
+		<label for="first_name">First Name</label>
+		<input type="text" name="first_name" id="first_name" required>
+
+		<label for="last_name">Last Name</label>
+		<input type="text" name="last_name" id="last_name" required>
+	</fieldset>
+
+	<fieldset>
+		<legend>Geographical Information</legend>
+
+		<label for="state">State</label>
+		<input type="text" name="state" id="state" placeholder="Two Characters" pattern="[A-Z]{2}" title="Please enter the abbreviation of your State" required>
+
+		<label for="zip_code">Zip Code</label>
+		<input type="text" name="zip_code" id="zip_code" placeholder="Five Digits" pattern="[0-9]{5}" title="Please enter a five digit area code" required>
+	</fieldset>
+
+	<fieldset>
+		<legend>Source</legend>
+		
+		<label for="search">How did you hear about us?</label>
+		<select>
+			<option value="Web">Web Search</option>
+			<option value="social">Social Media</option>
+			<option value="friend">Friends or family</option>
+		</select>
+
+		<label for="comments"></label>
+		<textarea placeholder="Add any additional comments here"></textarea> 
+	</fieldset>
+	<button type="submit" id="submit">Submit</button>
+	<button type="reset" id="reset">Reset</button>
+</form>
+
+</body>
+</html>
